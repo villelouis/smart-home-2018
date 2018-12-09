@@ -5,23 +5,35 @@ import ru.sbt.mipt.oop.Room;
 import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
 import ru.sbt.mipt.oop.events.processor.api.EventProcessor;
+
+import static ru.sbt.mipt.oop.SensorEventType.LIGHT_OFF;
 import static ru.sbt.mipt.oop.SensorEventType.LIGHT_ON;
 
-public class LightEventProcessor {
+public class LightEventProcessor implements EventProcessor{
 
-    public static void proccessEvent(SmartHome smartHome, SensorEvent sensorEvent) {
-        for (Room room : smartHome.getRooms()) {
-            for (Light light : room.getLights()) {
+    public void processEvent(SmartHome smartHome, SensorEvent sensorEvent) {
+        if (!isLightEvent(sensorEvent)) return;
+        // событие от источника света
+        smartHome.executeAction(object -> {
+            if (object instanceof Light) {
+                Light light = (Light) object;
                 if (light.getId().equals(sensorEvent.getObjectId())) {
                     if (sensorEvent.getType() == LIGHT_ON) {
-                        light.setOn(true);
-                        System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned on.");
+                        changeLightState(light, true, " was turned on.");
                     } else {
-                        light.setOn(false);
-                        System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned off.");
+                        changeLightState(light, false, " was turned off.");
                     }
                 }
             }
-        }
+        });
+    }
+
+    private void changeLightState(Light light, boolean state, String text) {
+        light.setOn(state);
+        System.out.println("Light " + light.getId() + " " + text);
+    }
+
+    private boolean isLightEvent(SensorEvent event) {
+        return event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF;
     }
 }

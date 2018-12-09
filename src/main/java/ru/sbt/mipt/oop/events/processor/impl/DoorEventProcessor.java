@@ -3,34 +3,34 @@ package ru.sbt.mipt.oop.events.processor.impl;
 import ru.sbt.mipt.oop.*;
 import ru.sbt.mipt.oop.events.processor.api.EventProcessor;
 
+import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_OPEN;
 
-public class DoorEventProcessor {
+public class DoorEventProcessor implements EventProcessor{
 
-    public static void proccessEvent(SmartHome smartHome, SensorEvent event) {
-        for (Room room : smartHome.getRooms()) {
-            for (Door door : room.getDoors()) {
+    public void processEvent(SmartHome smartHome, SensorEvent event) {
+        if (!isDoorEvent(event)) return;
+
+        smartHome.executeAction(object -> {
+            if (object instanceof Door) {
+                Door door = (Door) object;
                 if (door.getId().equals(event.getObjectId())) {
                     if (event.getType() == DOOR_OPEN) {
-                        door.setOpen(true);
-                        System.out.println("Door " + door.getId() + " in room " + room.getName() + " was opened.");
+                        changeDoorState(door, true, " was opened.");
                     } else {
-                        door.setOpen(false);
-                        System.out.println("Door " + door.getId() + " in room " + room.getName() + " was closed.");
-                        // если мы получили событие о закрытие двери в холле - это значит, что была закрыта входная дверь.
-                        // в этом случае мы хотим автоматически выключить свет во всем доме (это же умный дом!)
-                        if (room.getName().equals("hall")) {
-                            for (Room homeRoom : smartHome.getRooms()) {
-                                for (Light light : homeRoom.getLights()) {
-                                    light.setOn(false);
-                                    SensorCommand command = new SensorCommand(CommandType.LIGHT_OFF, light.getId());
-                                    Application.sendCommand(command);
-                                }
-                            }
-                        }
+                        changeDoorState(door, false, " was closed.");
+
                     }
                 }
             }
-        }
+        });
+    }
+    private void changeDoorState(Door door, boolean opened, String text) {
+        door.setOpen(opened);
+        System.out.println("Door " + door.getId() + " " + text);
+    }
+
+    private boolean isDoorEvent(SensorEvent event) {
+        return event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED;
     }
 }
