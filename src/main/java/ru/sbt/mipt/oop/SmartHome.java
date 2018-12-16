@@ -16,11 +16,13 @@ public class SmartHome implements Actionable{
     }
 
     public SmartHome() {
+        alarm = new Alarm();
         rooms = new ArrayList<>();
     }
 
     public SmartHome(Collection<Room> rooms) {
         this.rooms = rooms;
+        alarm = new Alarm();
     }
 
     public void addRoom(Room room) {
