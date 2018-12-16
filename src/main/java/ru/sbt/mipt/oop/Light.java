@@ -4,7 +4,7 @@ public class Light implements Actionable{
     private boolean isOn;
     private final String id;
 
-    public Light(String id, boolean isOn) {
+    public Light(boolean isOn, String id) {
         this.id = id;
         this.isOn = isOn;
     }
