@@ -1,10 +1,10 @@
-package ru.sbt.mipt.oop.events.processor.impl;
+package ru.sbt.mipt.oop.event.processor.impl;
 
 import ru.sbt.mipt.oop.Door;
 import ru.sbt.mipt.oop.Room;
 import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
-import ru.sbt.mipt.oop.events.processor.api.EventProcessor;
+import ru.sbt.mipt.oop.event.processor.api.EventProcessor;
 
 import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
 

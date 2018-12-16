@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.events.processor.impl;
+package ru.sbt.mipt.oop.event.processor.impl;
 
 import org.junit.Before;
 import org.junit.Test;

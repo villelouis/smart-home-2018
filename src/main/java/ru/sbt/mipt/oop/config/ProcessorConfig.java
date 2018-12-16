@@ -2,8 +2,8 @@ package ru.sbt.mipt.oop.config;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import ru.sbt.mipt.oop.events.processor.api.EventProcessor;
-import ru.sbt.mipt.oop.events.processor.impl.*;
+import ru.sbt.mipt.oop.event.processor.api.EventProcessor;
+import ru.sbt.mipt.oop.event.processor.impl.*;
 
 
 public class ProcessorConfig {

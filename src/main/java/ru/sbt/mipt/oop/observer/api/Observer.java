@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
-import ru.sbt.mipt.oop.events.processor.api.EventProcessor;
+import ru.sbt.mipt.oop.event.processor.api.EventProcessor;
 
 public interface Observer {
     void subscribe(EventProcessor processor);

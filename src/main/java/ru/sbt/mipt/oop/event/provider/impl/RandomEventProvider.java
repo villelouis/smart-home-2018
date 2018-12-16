@@ -1,8 +1,8 @@
-package ru.sbt.mipt.oop.events.provider.impl;
+package ru.sbt.mipt.oop.event.provider.impl;
 
 import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.SensorEventType;
-import ru.sbt.mipt.oop.events.provider.api.EventProvider;
+import ru.sbt.mipt.oop.event.provider.api.EventProvider;
 
 public class RandomEventProvider implements EventProvider {
 

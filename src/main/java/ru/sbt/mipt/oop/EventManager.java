@@ -1,6 +1,6 @@
 package ru.sbt.mipt.oop;
 import ru.sbt.mipt.oop.observer.api.Observer;
-import ru.sbt.mipt.oop.events.provider.api.EventProvider;
+import ru.sbt.mipt.oop.event.provider.api.EventProvider;
 
 public class EventManager {
     final private Observer observer;

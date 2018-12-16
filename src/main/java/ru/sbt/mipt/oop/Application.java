@@ -1,17 +1,13 @@
 package ru.sbt.mipt.oop;
 
 import ru.sbt.mipt.oop.config.ProcessorConfig;
-import ru.sbt.mipt.oop.events.processor.impl.DoorEventProcessor;
-import ru.sbt.mipt.oop.events.processor.impl.LightEventProcessor;
 import ru.sbt.mipt.oop.home.repository.SmartHomeRepository;
 import ru.sbt.mipt.oop.home.repository.sources.impl.jsonSmartHomeSource;
 import ru.sbt.mipt.oop.home.repository.sources.api.SmartHomeSource;
-import ru.sbt.mipt.oop.events.provider.impl.RandomEventProvider;
+import ru.sbt.mipt.oop.event.provider.impl.RandomEventProvider;
 import ru.sbt.mipt.oop.observer.impl.HomeEventsObserver;
 import ru.sbt.mipt.oop.observer.api.Observer;
 import java.io.IOException;
-
-import static ru.sbt.mipt.oop.SensorEventType.*;
 
 public class Application {
 

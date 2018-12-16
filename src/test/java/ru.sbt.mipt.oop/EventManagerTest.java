@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import ru.sbt.mipt.oop.observer.api.Observer;
 import ru.sbt.mipt.oop.observer.impl.HomeEventsObserver;
-import ru.sbt.mipt.oop.events.provider.api.EventProvider;
+import ru.sbt.mipt.oop.event.provider.api.EventProvider;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;

@@ -2,7 +2,7 @@ package ru.sbt.mipt.oop.observer.impl;
 
 import ru.sbt.mipt.oop.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
-import ru.sbt.mipt.oop.events.processor.api.EventProcessor;
+import ru.sbt.mipt.oop.event.processor.api.EventProcessor;
 import ru.sbt.mipt.oop.observer.api.Observer;
 
 import java.util.ArrayList;
